@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Una pregunta para ti ❤️</title>
+
+<style>
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+    font-family:Arial, sans-serif;
+    overflow:hidden;
+}
+
+.contenedor{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+    width:400px;
+    max-width:90%;
+}
+
+h1,h2,p{
+    color:#333;
+}
+
+button{
+    padding:12px 24px;
+    margin:10px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+#si{
+    background:#4CAF50;
+    color:white;
+}
+
+#no{
+    background:#f44336;
+    color:white;
+    position:absolute;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="contenedor" id="pantalla">
+
+<h1>🔬 Experimento IA</h1>
+
+<p>
+La inteligencia artificial necesita una voluntaria
+para realizar una prueba muy importante.
+</p>
+
+<p>
+El proceso es completamente seguro y solo tomará unos segundos.
+</p>
+
+<button id="si">
+Participar 😊
+</button>
+
+<button id="porSupuesto">
+Por supuesto 😎
+</button>
+
+</div>
+
+<script>
+
+document.getElementById("si").addEventListener("click", pantalla2);
+document.getElementById("porSupuesto").addEventListener("click", pantalla2);
+
+
+function pantalla2(){
+
+    document.getElementById("pantalla").innerHTML = `
+<h1>🤖 Pregunta de validación</h1>
+ 
+<p>
+Antes de continuar con el análisis,
+la IA necesita una respuesta adicional.
+</p>
+ 
+<h2>
+¿Te gusta Diego? 😊
+</h2>
+ 
+<button onclick="pantalla3()">
+Sí ❤️
+</button>
+ 
+<button id="noGusta">
+No 😅
+</button>
+`;
+ 
+const botonNoGusta = document.getElementById("noGusta");
+ 
+botonNoGusta.addEventListener("mouseover", () => {
+ 
+const ancho = window.innerWidth - 150;
+const alto = window.innerHeight - 100;
+ 
+botonNoGusta.style.position = "absolute";
+botonNoGusta.style.left = Math.random() * ancho + "px";
+botonNoGusta.style.top = Math.random() * alto + "px";
+ 
+});
+
+    let progreso = 0;
+
+    let intervalo = setInterval(() => {
+
+        progreso += 5;
+
+        document.getElementById("porcentaje").innerText = progreso + "%";
+
+        if(progreso >= 100){
+
+            clearInterval(intervalo);
+
+            document.getElementById("pantalla").innerHTML = `
+                <h1>✅ Respuesta registrada</h1>
+                <p>Se encontró información interesante.</p>
+                <button onclick="pantalla3()">Continuar</button>
+            `;
+
+        }
+
+    },80);
+
+}
+
+function pantalla3(){
+
+    document.getElementById("pantalla").innerHTML = `
+        <h1>El otro usuario respondio que le gusta</h1>
+
+        <p>✔ Tu sonrisa</p>
+        <p>✔ Tu forma de ser</p>
+        <p>✔ tu voz</p>
+        <p>✔ Tus ojos</p>
+
+        <button onclick="pantalla4()">Continuemos 🚀</button>
+    `;
+
+}
+
+function pantalla4(){
+
+    document.getElementById("pantalla").innerHTML = `
+        <h1>⚠ Hallazgo detectado</h1>
+
+        <p>
+        Después de tu respuesta,
+        se detectó algo bastante curioso.
+        </p>
+
+        <button onclick="pantalla5()">¿Qué encontró?</button>
+    `;
+
+}
+
+function pantalla5(){
+
+    document.getElementById("pantalla").innerHTML = `
+        <h1>❤️ Información confidencial</h1>
+
+        <p>
+        Según la IA !Son muy compatibles¡
+        </p>
+
+        <button onclick="pantalla6()">Conclusiones de la IA</button>
+    `;
+
+}
+
+function pantalla6(){
+
+    document.getElementById("pantalla").innerHTML = `
+        <h1>Porque eres compatible con DIEGO</h1>
+
+        <p>✅ Llegarían a la conclusión de que ninguno sabe elegir película.</p>
+ 
+        <p>✅ Harían planes espontáneos que terminarían saliendo mejor de lo esperado.</p>
+ 
+        <p>✅ Tendrían demasiados chistes.</p>
+ 
+        <p>✅ Serían una combinación sospechosamente buena.</p>
+ 
+        <p>⚠ Advertencia: existe riesgo de pasarla demasiado bien.</p>
+
+        <button onclick="pantalla7()">Una última cosa...</button>
+    `;
+
+}
+
+function pantalla7(){
+
+    document.getElementById("pantalla").innerHTML = `
+        <h1>🤔</h1>
+
+        <p>
+        El sistema detecto una anomalia.
+        </p>
+
+        <p>
+        Los resultados son muy evidentes.
+        </p>
+
+        <p>
+        Se recomienda revisar los resultados.
+        </p>
+
+        <button onclick="pantallaFinal()">Descubrir</button>
+    `;
+
+}
+
+function pantallaFinal(){
+
+    document.getElementById("pantalla").innerHTML = `
+        <h1>🤖 Observación Final</h1>
+
+        <p>
+        Despues de analizar toda la información.....
+        </p>
+
+        <h2>
+        Compatibilidad detectada: 99.99%
+        </h2>
+
+        <p>
+        El sistema considera que existe un alto potencial para una buena primera cita.
+        </p>
+
+        <p>
+        Sin embargo, esta teoría aún requiere validación.
+        </p>
+
+        <button onclick="confirmacion()">
+            Validar Teoría
+        </button>
+    `;
+
+}
+
+function confirmacion(){
+
+    document.getElementById("pantalla").innerHTML = `
+        <h1>⚠ Confirmación requerida</h1>
+
+        <p>
+        ¿Estás completamente segura?
+        </p>
+
+        <br>
+
+        <button onclick="acepto()">
+            Sí
+        </button>
+
+        <button onclick="acepto()">
+            Muy segura
+        </button>
+
+        <button onclick="acepto()">
+            Sorprendentemente segura
+        </button>
+
+    `;
+
+}
+
+function acepto(){
+
+    document.getElementById("pantalla").innerHTML = `
+        <h1>🎉 MISIÓN COMPLETADA 🎉</h1>
+
+        <p>✅ Compatibilidad confirmada</p>
+
+        <p>✅ Modo cita desbloqueado</p>
+
+        <p>✅ Nivel "salir juntos" disponible</p>
+
+        <p>✅ Riesgo extremo de pasarla bien</p>
+
+        <br>
+
+        <h1>❤️</h1>
+
+        <p>
+        📱 Cita desbloqueada correctamente
+        </p>
+
+        <p>
+        Para activar esta recompensa,debes contactarte con el otro usuario.
+        </p>
+
+        <p>
+        ⏳ El otro usuario permanece en línea,esperando una respuesta
+        </p>
+    `;
+
+}
+
+</script>
+ 
+</body>
+</html>
